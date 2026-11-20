@@ -32,3 +32,36 @@ const array2: Student[] = [
 ];
 
 console.log(mergeArrays(array1, array2));
+
+//soal 2
+
+type Person = {
+  name: string;
+  age: number;
+}
+
+type Swap = {
+  [key: string]: string;}
+
+function swapProperties(obj: Person[]): Swap[] {
+  const swappedArray: Swap[] = [];
+
+  for (let i = 0; i < obj.length; i++) {
+    const swappedObj: Swap = {};
+    const entries = Object.entries(obj[i]);
+
+    for (let j = 0; j < entries.length; j++) {
+      const property = entries[j][0];
+      const value = entries[j][1];
+      swappedObj[String(value)] = property;
+    }
+
+    swappedArray.push(swappedObj);
+  }
+
+  return swappedArray;
+}
+
+const people: Person[] = [{ name: "David", age: 20 }];
+
+console.log(swapProperties(people));
